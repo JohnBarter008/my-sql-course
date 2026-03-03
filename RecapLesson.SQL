@@ -45,3 +45,27 @@ a.[type] = 'large_airport'
 ORDER BY 
 a.name ASC --in ascending order
 
+SELECT
+    a.name 
+    ,a.latitude_deg 
+    ,a.longitude_deg 
+    ,a.iata_code 
+    ,a.elevation_ft
+    ,ROUND((a.elevation_ft / 3.28),1) as 'Elevation_M'
+    ,a.iso_country
+FROM
+    airports a
+WHERE
+a.[type] = 'large_airport'
+    AND a.continent = 'EU'
+    AND a.iso_country IN ('GB','FR')
+    --AND a.latitude_deg BETWEEN 51 AND 54
+ORDER BY 
+a.name ASC --in ascending order
+
+SELECT top 5
+    a.iso_region
+    ,COUNT(*) AS total_airports
+FROM airports a
+GROUP BY a.iso_region
+order by total_airports DESC
