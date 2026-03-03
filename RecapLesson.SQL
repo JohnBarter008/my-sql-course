@@ -63,6 +63,7 @@ a.[type] = 'large_airport'
 ORDER BY 
 a.name ASC --in ascending order
 
+--Select the top five regions with the most airports and list in order
 SELECT top 5
     a.iso_region
     ,COUNT(*) AS total_airports
